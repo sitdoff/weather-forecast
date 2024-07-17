@@ -216,6 +216,20 @@ django = "*"
 typing-extensions = "*"
 
 [[package]]
+name = "djangorestframework"
+version = "3.15.2"
+description = "Web APIs for Django, made easy."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "djangorestframework-3.15.2-py3-none-any.whl", hash = "sha256:2b8871b062ba1aefc2de01f773875441a961fefbf79f5eed1e32b2f096944b20"},
+    {file = "djangorestframework-3.15.2.tar.gz", hash = "sha256:36fe88cd2d6c6bec23dca9804bab2ba5517a8bb9d8f47ebc68981b56840107ad"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
 name = "environs"
 version = "11.0.0"
 description = "simplified environment variable parsing"
@@ -591,4 +605,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "3789a5f7461a0d7297f4bc7f18da413346dfca5ee4123c83ffc70afdb2d93209"
+content-hash = "b896460f7bb2a97fa80b4922c72981a8af83560b9706de53624e7d644693602a"
