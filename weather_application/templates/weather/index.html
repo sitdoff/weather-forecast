@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Forecast weather
+{% endblock title %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center"
+         style="height: 100vh">
+        <div class="container">
+            <div class="table">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {{ field.errors }}
+                        <div class="input-group mb-3">
+                            {{ field }}
+                            <button class="btn btn-outline-secondary" type="submit">Отправить</button>
+                        </div>
+                    {% endfor %}
+                </form>
+                {% if forecast %}
+                    <table class="table table-striped">
+                        {% for date, values in forecast.items %}
+                            {% ifchanged date.date %}
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" colspan={{ values|length|add:1 }}>{{ date|date:"d.m.Y" }}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>Время</th>
+                                        <th>Температура</th>
+                                        <th>Влажность</th>
+                                        <th>Осадки</th>
+                                        <th>Скорость ветра</th>
+                                    </tr>
+                                </thead>
+                            {% endifchanged %}
+                            <tr>
+                                <td>{{ date|time:"H:i:s" }}</td>
+                                {% for value in values.values %}<td>{{ value }}</td>{% endfor %}
+                            {% endfor %}
+                        </tr>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,8 +1,8 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 import requests
 from geopy.geocoders import Nominatim
-from request_config import REQUEST_CONFIG, URL
+from weather.request_config import REQUEST_CONFIG, URL
 
 
 def get_coordinates(city: str) -> tuple:
@@ -11,7 +11,9 @@ def get_coordinates(city: str) -> tuple:
     """
     geolocator = Nominatim(user_agent="weather_application")
     location = geolocator.geocode(city)
-    return location.latitude, location.longitude
+    if location:
+        return location.latitude, location.longitude
+    raise ValueError("City not found")
 
 
 def get_response(city: str) -> dict:
@@ -33,7 +35,7 @@ def data_formatting(response: dict) -> dict:
     for i, time in enumerate(response["hourly"]["time"]):
         if time < datetime.now().timestamp():
             continue
-        time = datetime.fromtimestamp(time).strftime("%d.%m.%Y, %H:%M:%S")
+        time = datetime.fromtimestamp(time)
         result[time] = {}
         for variable in REQUEST_CONFIG["hourly"]:
             result[time][variable] = f"{response["hourly"][variable][i]} {response["hourly_units"][variable]}"
