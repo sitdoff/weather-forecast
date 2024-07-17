@@ -1,3 +1,7 @@
+"""
+В этом модуле находятся настроки для запроса к API.
+"""
+
 from django.conf import settings
 
 URL = "https://api.open-meteo.com/v1/forecast"

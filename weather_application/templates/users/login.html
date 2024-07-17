@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center"
+         style="height: 100vh">
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="field-wrapper">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="input-group mb-3">{{ field }}</div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-secondary">Войти</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -5,21 +5,26 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="container d-flex justify-content-center align-items-center"
-         style="height: 100vh">
+    <div class="container " style="height: 100vh">
         <div class="container">
-            <div class="table">
-                <form enctype="multipart/form-data" method="post">
-                    {% csrf_token %}
-                    {% for field in form %}
-                        {{ field.errors }}
-                        <div class="input-group mb-3">
-                            {{ field }}
-                            <button class="btn btn-outline-secondary" type="submit">Отправить</button>
-                        </div>
-                    {% endfor %}
-                </form>
-                {% if forecast %}
+            {% if request.COOKIES.last_city and request.method == 'GET' %}
+                <div>Желаете посмотреть погоду в городе {{ form.city.value }}?</div>
+                <br />
+            {% endif %}
+            <dif class="form">
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{ field.errors }}
+                    <div class="input-group mb-3">
+                        {{ field }}
+                        <button class="btn btn-outline-secondary" type="submit">Отправить</button>
+                    </div>
+                {% endfor %}
+            </form>
+            </dif>
+            {% if forecast %}
+                <div class="table">
                     <table class="table table-striped">
                         {% for date, values in forecast.items %}
                             {% ifchanged date.date %}
@@ -43,8 +48,8 @@
                             {% endfor %}
                         </tr>
                     </table>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

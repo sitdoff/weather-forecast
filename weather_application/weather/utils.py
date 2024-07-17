@@ -1,4 +1,8 @@
-from datetime import datetime, timezone
+"""
+В этом модуле находятся вспомогательные функции для работы с API.
+"""
+
+from datetime import datetime
 
 import requests
 from geopy.geocoders import Nominatim

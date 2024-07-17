@@ -5,5 +5,8 @@ from .models import HistoryModel
 
 
 def add_history(request: HttpRequest):
+    """
+    Добавляет запись в историю запросов погоды.
+    """
     user = request.user if not isinstance(request.user, AnonymousUser) else None
     HistoryModel.objects.create(user=user, city=request.POST["city"])
