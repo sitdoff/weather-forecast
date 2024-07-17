@@ -16,11 +16,10 @@ def get_coordinates(city: str) -> tuple:
     raise ValueError("City not found")
 
 
-def get_response(city: str) -> dict:
+def get_response(latitude, longitude) -> dict:
     """
     Получает данные от API.
     """
-    latitude, longitude = get_coordinates(city)
     REQUEST_CONFIG.update({"latitude": latitude, "longitude": longitude})
     with requests.get(URL, params=REQUEST_CONFIG) as response:
         response = response.json()
@@ -47,6 +46,7 @@ def get_forecast(city: str) -> dict[datetime, dict[str, str]]:
     """
     Получает прогноз погоды.
     """
-    response = get_response(city)
+    latitude, longitude = get_coordinates(city)
+    response = get_response(latitude, longitude)
     forecast = data_formatting(response)
     return forecast
