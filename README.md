@@ -97,6 +97,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python weather_application/manage.py makemigrations
 python weather_application/manage.py migrate
-python weather_application/manage.py runserver
 python weather_application/manage.py loaddata demo_data.json
+python weather_application/manage.py runserver
 ```
