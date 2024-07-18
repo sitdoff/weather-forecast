@@ -95,8 +95,8 @@ git clone https://github.com/sitdoff/weather-forecast.git
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
-python manage.py loaddata demo_data.json
+python weather_application/manage.py makemigrations
+python weather_application/manage.py migrate
+python weather_application/manage.py runserver
+python weather_application/manage.py loaddata demo_data.json
 ```
