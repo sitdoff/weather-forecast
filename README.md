@@ -58,7 +58,6 @@
 ```
 login: admin_demo
 password: admin_demo
-
 ```
 
 -   Обычный пользователь
