@@ -39,7 +39,7 @@
 
 3. Сбор статистики запросов
 
--   Приложение предоставляет дотуп к данным в каких городах запрашивался прогноз погоды.
+-   Приложение предоставляет доcтуп к данным в каких городах запрашивался прогноз погоды.
 
 ## Как запустить
 
@@ -92,6 +92,9 @@ git clone https://github.com/sitdoff/weather-forecast.git
 2. Перейти в папку проекта и выполнить команды. Приложение будет доступно по адресу http://localhost:8000
 
 ```
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
