@@ -41,7 +41,7 @@ def data_formatting(response: dict) -> dict:
         time = datetime.fromtimestamp(time)
         result[time] = {}
         for variable in REQUEST_CONFIG["hourly"]:
-            result[time][variable] = f"{response["hourly"][variable][i]} {response["hourly_units"][variable]}"
+            result[time][variable] = f'{response["hourly"][variable][i]} {response["hourly_units"][variable]}'
 
     return result
 
