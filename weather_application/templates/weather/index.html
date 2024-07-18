@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load custom_filters %}
+
 {% block title %}
     Forecast weather
 {% endblock title %}
@@ -34,17 +36,14 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th>Время</th>
-                                        <th>Температура</th>
-                                        <th>Влажность</th>
-                                        <th>Осадки</th>
-                                        <th>Скорость ветра</th>
+                                        <th class ="text-center">{{ lexicon.time }}</th>
+                                        {% for key in values %}<th class="text-center">{{ lexicon|get_item:key }}</th>{% endfor %}
                                     </tr>
                                 </thead>
                             {% endifchanged %}
                             <tr>
-                                <td>{{ date|time:"H:i:s" }}</td>
-                                {% for value in values.values %}<td>{{ value }}</td>{% endfor %}
+                                <td class="text-center">{{ date|time:"H:i:s" }}</td>
+                                {% for value in values.values %}<td class="text-center">{{ value }}</td>{% endfor %}
                             {% endfor %}
                         </tr>
                     </table>

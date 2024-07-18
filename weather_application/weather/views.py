@@ -4,6 +4,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from history.utils import add_history
 
 from .forms import CityForm
+from .request_config import VARIABLES_LEXICON
 from .utils import get_forecast
 
 
@@ -38,7 +39,9 @@ def index(request: HttpRequest) -> HttpResponse:
             except ValueError:
                 form.add_error("city", "Error: City not found")
             else:
-                response = render(request, "weather/index.html", {"form": form, "forecast": forecast})
+                response = render(
+                    request, "weather/index.html", {"form": form, "forecast": forecast, "lexicon": VARIABLES_LEXICON}
+                )
                 encoded_city = urlsafe_base64_encode(city.encode())
                 response.set_cookie("last_city", encoded_city)
                 return response
