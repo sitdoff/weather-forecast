@@ -24,3 +24,4 @@ query_debugger.py
 .env_example
 .prettierrc.toml
 wait-for-it.sh
+weather_application/db.sqlite3.back
