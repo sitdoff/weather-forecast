@@ -6,6 +6,13 @@
 
 Данное веб-приложение позволяет пользователям быстро и удобно получать прогноз погоды для любого города в мире. Приложение разработано с целью предоставить актуальную информацию о погодных условиях, что позволяет пользователям планировать свои дела, путешествия и ежедневные активности.
 
+### Дополнительно
+
+-   Написаны тесты для ключевых функций
+-   Написан Dockerfile для контейнеризации
+-   Реализовано сохранение города, для которого был запрошен предыдущий прогноз
+-   Реализовано сохранение истории запросов
+
 ### Доступные страницы
 
 -   /history/ - статистика запросов в формате json
@@ -97,6 +104,6 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python weather_application/manage.py makemigrations
 python weather_application/manage.py migrate
-python weather_application/manage.py loaddata demo_data.json
+python weather_application/manage.py loaddata weather_application/demo_data.json
 python weather_application/manage.py runserver
 ```
